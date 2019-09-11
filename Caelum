@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Caelum1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Conta r = new Conta();
+            Conta e = new Conta();
+            Conta p = new Conta();
+            Conta a = new Conta();
+
+            r.numero = 1;
+            r.saldo = 500;
+            r.titular = "Rodrigo";
+
+            e.numero = 2;
+            e.saldo = 1500;
+            e.titular = "Eda";
+
+            p.numero = 3;
+            p.saldo = 2000;
+            p.titular = "Priscila";
+
+            a.numero = 4;
+            a.saldo = 2500;
+            a.titular = "Aimee";
+
+
+
+        }
+    }
+}
