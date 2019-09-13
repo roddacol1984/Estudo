@@ -25,13 +25,6 @@ namespace Caelum1
             contaD.titular.cpf = "123";
             contaD.titular.rg = "321";
 
-             
-
-            Cliente f = new Cliente();
-            f.
-              
-
-
 
             rod.numero = 1;
             rod.saldo = 500;
@@ -96,12 +89,15 @@ namespace Caelum1
 
             }
             MessageBox.Show("o valor da conta da Aimee antes da transferência é: " + a.saldo);
+
             a.Deposita(300);
+            
             MessageBox.Show("o valor da conta da Aimee apos  a transferência é: " + a.saldo);
             MessageBox.Show("o valor da conta da Eda antes da transferência é: " + e.saldo);
+            
             e.Transfere(200, rod);
+            
             MessageBox.Show("O Saldo é: " + rod.saldo);
-
             MessageBox.Show("o valor da conta da Eda após a transferência é: " + e.saldo);
 
         }
