@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Caelum1
 {
@@ -11,29 +12,178 @@ namespace Caelum1
         static void Main(string[] args)
         {
 
-            Conta r = new Conta();
+            Conta rod = new Conta();
             Conta e = new Conta();
             Conta p = new Conta();
             Conta a = new Conta();
 
-            r.numero = 1;
-            r.saldo = 500;
-            r.titular = "Rodrigo";
+            Cliente clienteA = new Cliente();
+            Conta contaD = new Conta();
+            contaD.titular = clienteA;
+            contaD.titular.nome = "Rodrigo";
+            contaD.titular.endereco = "Rua Alegre";
+            contaD.titular.cpf = "123";
+            contaD.titular.rg = "321";
+
+             
+
+            Cliente f = new Cliente();
+            f.
+              
+
+
+
+            rod.numero = 1;
+            rod.saldo = 500;
+            //rod.titular = "Rodrigo";
 
             e.numero = 2;
             e.saldo = 1500;
-            e.titular = "Eda";
+            //e.titular = "Eda";
 
             p.numero = 3;
             p.saldo = 2000;
-            p.titular = "Priscila";
+            //p.titular = "Priscila";
 
             a.numero = 4;
             a.saldo = 2500;
-            a.titular = "Aimee";
+            //a.titular = "Aimee";
 
 
+
+            bool deuCerto = a.Saca(500);
+
+            if (deuCerto)
+            {
+                MessageBox.Show("Saque da " + a.titular + " realizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show("Saldo insuficiente");
+            }
+
+
+            bool deuCerto2 = e.Saca(500);
+
+            if (deuCerto)
+            {
+                MessageBox.Show("Saque realizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show("Saldo insuficiente");
+            }
+
+            bool deuCerto3 = p.Saca(500);
+
+            if (deuCerto3)
+            {
+                MessageBox.Show("Saquei");
+            }
+            else
+            {
+                MessageBox.Show("Não sacou");
+            }
+
+            if (e.Saca(200))
+            {
+                MessageBox.Show("Saque da " + e.titular + " realizado com sucesso");
+            }
+            else
+            {
+
+                MessageBox.Show("Saque não rolou");
+
+            }
+            MessageBox.Show("o valor da conta da Aimee antes da transferência é: " + a.saldo);
+            a.Deposita(300);
+            MessageBox.Show("o valor da conta da Aimee apos  a transferência é: " + a.saldo);
+            MessageBox.Show("o valor da conta da Eda antes da transferência é: " + e.saldo);
+            e.Transfere(200, rod);
+            MessageBox.Show("O Saldo é: " + rod.saldo);
+
+            MessageBox.Show("o valor da conta da Eda após a transferência é: " + e.saldo);
 
         }
     }
 }
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Caelum1
+{
+    public class Conta
+    {
+        public int numero;
+        //public string titular;
+        public double saldo;
+        public Cliente titular;
+
+        public bool Saca(double valor)
+        {
+            if (this.saldo >= valor)
+            {
+                this.saldo -= valor;
+                return true;
+            }
+            return false;
+           
+        }
+
+        public void Deposita(double valor)
+        {
+            this.saldo += valor;
+
+        }
+
+        public void Transfere(double valor, Conta destino)
+        {
+            if(this.Saca(valor))
+            {
+                destino.Deposita(valor);
+            }
+
+        }
+        
+
+
+
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Caelum1
+{
+    public class Cliente
+    {
+        public string nome;
+        public string cpf;
+        public string rg;
+        public string endereco;
+        public int idade;
+
+        public bool EhMaiorDeIdade(int idade)
+        {
+
+            if (this.idade >= 18)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+}
+
+
+
